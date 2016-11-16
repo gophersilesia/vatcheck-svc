@@ -1,56 +1,27 @@
-Go Workshop: Build a microservice from scratch
-Nexway, March 15-16, 2016
+Go workshop: Build a microservice from scratch
+Gophers Katowice, November 19, 2016
 
-Jonathan Gautheron
+Jonathan Gautheron & Karol Górecki
 
-* About me
+* About us
 
 Past and current works:
 
-- [[https://github.com/exago][exago]] — Code quality as a service.
-- [[https://github.com/jgautheron/gocha][gocha]] — Git-based changelog generator.
+- [[https://www.exago.io][exago]] — Code quality as a service.
+- [[https://github.com/karolgorecki/goprove][goprove]] — Inspect your project for the best practices listed in the Go Checklist.
 - [[https://github.com/jgautheron/goconst][goconst]], [[https://github.com/jgautheron/usedexports][usedexports]], [[https://github.com/jgautheron/gogetimports][gogetimports]] — Code quality tools.
+- Microservices
 
 .image http://golang.org/doc/gopher/gopherbw.png 200 _
 
-* The plan for this session
+* Chapters
 
-1. Install Go
-2. Setup your favorite editor
-3. Best practices
-4. Live coding session
-
-* Before we start
-
-The goal of this workshop is to get you started with Go.
-No comparison will be made with other languages.
-
-.image peace.jpeg 400 _
-
-* Install Go
-*What*is*the*GOPATH?*
-
-The GOPATH environment variable is used to specify directories outside of $GOROOT that contain the source for Go projects and their binaries.
-
-*Tutorials*for*each*OS*
-
-- [[http://www.wadewegner.com/2014/12/easy-go-programming-setup-for-windows/][Windows]]
-- [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][OSX & Linux]]
-
-* Setup an editor
-
-*Sublime*Text*
-
-- [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][OSX & Linux]]
-- Windows [[http://www.sublimetext.com/3][part 1]] - [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][part 2]]
-
-*Atom*
-
-- [[http://marcio.io/2015/07/supercharging-atom-editor-for-go-development/][go-plus]]
-
-*VIM*
-
-- [[https://github.com/fatih/vim-go][vim-go]]
+1. VAT # validation logic
+2. Circuit breaker
+3. Caching layer (+ config)
+4. Tests + bench
+5. HTTP server
+6. `cmd` package
 
 * Best Practices in Go
 
@@ -87,6 +58,13 @@ Use the best tool for the job.
 
 .image https://pbs.twimg.com/profile_images/592837647577587714/eNMItpUG.png _ 150
 
+* For the sake of this exercise
+
+We transgressed a few microservices concept for the sake of simplicity.
+
+- Cache should be distributed
+- Configuration should be distributed as well, based on Consul and updatable on-the-fly
+
 * We will implement
 
 - Environment-based configuration
@@ -94,6 +72,14 @@ Use the best tool for the job.
 - Circuit breaker
 - Health monitoring
 - HTTP server with middleware
+
+* A few extras
+
+If we have time, we'll take a look at:
+
+- Makefile
+- Docker
+- Vendoring
 
 * Time to code!
 

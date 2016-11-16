@@ -11,9 +11,9 @@ No prior knowledge of Go is necessary.
 ❗Requirements  
 You will need a laptop and don't forget your power cord!
 
-After this workshop (split in 2x 2h), you will know:
+After this workshop, you will know:
 
-✅ how to setup a productive development environment (Sublime, Atom, vim...)   
+✅ how to setup a productive development environment (Sublime, Atom, VS Code, vim...)   
 ✅ microservices jargon & best practices  
 ✅ vendoring management  
 ✅ Makefile  
@@ -26,4 +26,4 @@ Please note that the main language for this event is english.
 
 #### Slides
 
-http://go-talks.appspot.com/github.com/jgautheron/workshop/vat/_slides/vat.slide#1
+http://go-talks.appspot.com/github.com/gopherskatowice/vatcheck-svc/_slides/vat.slide#1
