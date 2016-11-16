@@ -1,0 +1,11 @@
+package: github.com/jgautheron/workshop/vat
+import:
+- package: github.com/NexwayGroup/envconfig
+- package: github.com/Sirupsen/logrus
+- package: github.com/codegangsta/cli
+- package: github.com/gamegos/jsend
+- package: github.com/mattes/vat
+- package: github.com/nbio/hitch
+- package: github.com/rs/cors
+- package: github.com/sony/gobreaker
+- package: github.com/wunderlist/ttlcache

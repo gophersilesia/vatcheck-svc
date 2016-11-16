@@ -1,0 +1,40 @@
+hash: 542041dd852b441035336cbcdc3ca49edd66d1d86309820943c64a488619371f
+updated: 2016-04-19T11:55:18.793634939+02:00
+imports:
+- name: github.com/codegangsta/cli
+  version: 71f57d300dd6a780ac1856c005c4b518cfd498ec
+- name: github.com/gamegos/jsend
+  version: f47e169f3d768aeab828e47649413b719372981f
+- name: github.com/gocraft/health
+  version: 4497d93bda869d8c90236bab73a65f00c1650a7b
+  subpackages:
+  - stack
+- name: github.com/julienschmidt/httprouter
+  version: 77366a47451a56bb3ba682481eed85b64fea14e8
+- name: github.com/mattes/vat
+  version: 93e8c05572f45e3488bc12ffec73348956d51c68
+- name: github.com/nbio/hitch
+  version: 8fcbaa615cc71ee9bf9b4049f323d6939bf16e7b
+- name: github.com/nbio/httpcontext
+  version: d2f7bb023e6ebb562d7d5e07a5f3a6ce935f4666
+- name: github.com/NexwayGroup/envconfig
+  version: adea6faa932c0ec5356ccc186169d0825c611565
+- name: github.com/rs/cors
+  version: 3ca2b550f6a4333b63c845850f760a7d00412cd6
+- name: github.com/rs/xhandler
+  version: d9d9599b6aaf6a058cb7b1f48291ded2cbd13390
+- name: github.com/Sirupsen/logrus
+  version: 081307d9bc1364753142d5962fc1d795c742baaf
+- name: github.com/sony/gobreaker
+  version: 7b3b6140aefe29b32f779da1ea73510d3d315609
+- name: github.com/wunderlist/ttlcache
+  version: fa8f18d5e019f6bdf076153e60dccf2c6fc7ccf5
+- name: golang.org/x/net
+  version: fb93926129b8ec0056f2f458b1f519654814edf0
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: f64b50fbea64174967a8882830d621a18ee1548e
+  subpackages:
+  - unix
+devImports: []

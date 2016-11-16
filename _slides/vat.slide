@@ -1,0 +1,100 @@
+Go Workshop: Build a microservice from scratch
+Nexway, March 15-16, 2016
+
+Jonathan Gautheron
+
+* About me
+
+Past and current works:
+
+- [[https://github.com/exago][exago]] — Code quality as a service.
+- [[https://github.com/jgautheron/gocha][gocha]] — Git-based changelog generator.
+- [[https://github.com/jgautheron/goconst][goconst]], [[https://github.com/jgautheron/usedexports][usedexports]], [[https://github.com/jgautheron/gogetimports][gogetimports]] — Code quality tools.
+
+.image http://golang.org/doc/gopher/gopherbw.png 200 _
+
+* The plan for this session
+
+1. Install Go
+2. Setup your favorite editor
+3. Best practices
+4. Live coding session
+
+* Before we start
+
+The goal of this workshop is to get you started with Go.
+No comparison will be made with other languages.
+
+.image peace.jpeg 400 _
+
+* Install Go
+*What*is*the*GOPATH?*
+
+The GOPATH environment variable is used to specify directories outside of $GOROOT that contain the source for Go projects and their binaries.
+
+*Tutorials*for*each*OS*
+
+- [[http://www.wadewegner.com/2014/12/easy-go-programming-setup-for-windows/][Windows]]
+- [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][OSX & Linux]]
+
+* Setup an editor
+
+*Sublime*Text*
+
+- [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][OSX & Linux]]
+- Windows [[http://www.sublimetext.com/3][part 1]] - [[https://medium.com/@jgautheron/sublime-text-and-go-2b8af99fc16a][part 2]]
+
+*Atom*
+
+- [[http://marcio.io/2015/07/supercharging-atom-editor-for-go-development/][go-plus]]
+
+*VIM*
+
+- [[https://github.com/fatih/vim-go][vim-go]]
+
+* Best Practices in Go
+
+1. *Executable*commands*must*always*use* `package`main`
+Which is why `cmd` uses the `package`main`, the communication channel with the API being command line.
+
+2. *Name* `server` *the*HTTP*server*
+Keep the HTTP stuff isolated in this package, detached from the API.
+It's HTTP now, might be another transport tomorrow.
+
+3. *Natural*language*for*documentation*
+Forget about the good old @tag.
+
+4. *Keep*it*simple*
+Stay away from frameworks as much as possible, until it makes sense.
+Learn properly the standard library.
+
+* Microservice Best Practices
+
+1. *Single*Business*Capability*
+Keep it focused.
+
+2. *Bounded-context*
+Avoid liabilities and moving stones.
+
+3. *Distribution*
+Scale from 1 to infinity effortlessly.
+
+4. *Resilience*
+Make it damn hard to kill. Think cockroach.
+
+5. *Polyglot*
+Use the best tool for the job.
+
+.image https://pbs.twimg.com/profile_images/592837647577587714/eNMItpUG.png _ 150
+
+* We will implement
+
+- Environment-based configuration
+- Local cache
+- Circuit breaker
+- Health monitoring
+- HTTP server with middleware
+
+* Time to code!
+
+.image coders.png 500 _
