@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jgautheron/workshop/vat"
+	"github.com/gopherskatowice/vatcheck-svc"
 	"github.com/jmcvetta/randutil"
 )
 

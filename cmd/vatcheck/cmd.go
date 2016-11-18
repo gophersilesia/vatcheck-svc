@@ -5,7 +5,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
-	. "github.com/jgautheron/workshop/vat/config"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
 )
 
 var (

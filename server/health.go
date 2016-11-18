@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	. "github.com/jgautheron/workshop/vat/config"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gocraft/health"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/nbio/httpcontext"
 )
 
@@ -46,9 +46,4 @@ func (srv *Instance) initHealthJob(next http.Handler) http.Handler {
 		httpcontext.Set(req, healthJobKey, srv.stream.NewJob(jobCheckVat))
 		next.ServeHTTP(w, req)
 	})
-}
-
-// healthJob extracts the job from the request.
-func healthJob(req *http.Request) *health.Job {
-	return httpcontext.Get(req, healthJobKey).(*health.Job)
 }
