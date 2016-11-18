@@ -3,40 +3,34 @@ package server
 import (
 	"net/http"
 
-	"github.com/gamegos/jsend"
+	log "github.com/Sirupsen/logrus"
 	"github.com/gopherskatowice/vatcheck-svc"
 	"github.com/labstack/echo"
 	"github.com/mattes/vat"
 )
 
+// Response defines the standard JSON output.
+type Response struct {
+	Success bool `json:"success"`
+}
+
 // vatHandler checks in the VIES database if the given number is valid.
 func (srv *Instance) vatHandler(c echo.Context) (err error) {
 	vatid := c.Param("vatid")
-	w := c.Response()
+	status := http.StatusOK
 
-	checker := vatcheck.New(vat.CheckVAT)
-	valid, err := checker.IsValid(vatid)
+	valid, err := srv.Checker.IsValid(vatid)
 	if err != nil {
-		_, err := jsend.Wrap(w).
-			Status(getCodeForError(err)).
-			Message(err.Error()).
-			Send()
-		return err
+		log.WithField("vatid", vatid).Error(err)
+		status = getCodeForError(err)
 	}
 
-	_, err = jsend.Wrap(w).
-		Status(http.StatusOK).
-		Data(valid).
-		Send()
-	return err
+	return c.JSON(status, Response{valid})
 }
 
-// healthHandler checks in the VIES database if the given number is valid.
+// healthHandler allows to check externally if the service is reachable.
 func (srv *Instance) healthHandler(c echo.Context) (err error) {
-	w := c.Response()
-	w.WriteHeader(http.StatusOK)
-	_, err = w.Write([]byte(`{"alive": true}`))
-	return err
+	return c.JSON(http.StatusOK, Response{true})
 }
 
 // getCodeForError returns the matching HTTP code for a given error.
@@ -46,11 +40,7 @@ func getCodeForError(err error) (code int) {
 	switch err {
 	case vatcheck.ErrInvalidFormat:
 		code = http.StatusBadRequest
-	case vatcheck.ErrCircuitTripped:
-		fallthrough
-	case vat.ErrVATnumberNotValid:
-		fallthrough
-	case vat.ErrVATserviceUnreachable:
+	case vatcheck.ErrCircuitTripped, vat.ErrVATnumberNotValid, vat.ErrVATserviceUnreachable:
 		code = http.StatusServiceUnavailable
 	}
 	return

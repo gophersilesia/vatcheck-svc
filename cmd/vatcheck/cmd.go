@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	App *cli.App
+	app *cli.App
 
 	// Do not set these manually! these variables
 	// are meant to be set through ldflags.
@@ -17,16 +17,16 @@ var (
 )
 
 func init() {
-	App = cli.NewApp()
-	App.Name = "vatcheck-svc"
-	App.Usage = "Check if the given VAT number is valid against the EU VIES service"
-	App.Author = "Gophers Katowice"
-	App.Version = fmt.Sprintf("%s built %s", buildTag, buildDate)
+	app = cli.NewApp()
+	app.Name = "vatcheck-svc"
+	app.Usage = "Check if the given VAT number is valid against the EU VIES service"
+	app.Author = "Gophers Katowice"
+	app.Version = fmt.Sprintf("%s built %s", buildTag, buildDate)
 }
 
 func main() {
 	AddCommands()
-	if err := App.Run(os.Args); err != nil {
+	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -38,7 +38,7 @@ func AddCommands() {
 
 // AddCommand adds a child command.
 func AddCommand(cmd cli.Command) {
-	App.Commands = append(App.Commands, cmd)
+	app.Commands = append(app.Commands, cmd)
 }
 
 // InitializeLogging sets logrus log level.

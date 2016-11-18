@@ -13,7 +13,6 @@ You will need a laptop and don't forget your power cord!
 
 After this workshop, you will know:
 
-✅ how to setup a productive development environment (Sublime, Atom, VS Code, vim...)   
 ✅ microservices jargon & best practices  
 ✅ vendoring management  
 ✅ Makefile  

@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	log "github.com/Sirupsen/logrus"
+	vatcheck "github.com/gopherskatowice/vatcheck-svc"
 	. "github.com/gopherskatowice/vatcheck-svc/config"
 
 	"github.com/labstack/echo"
@@ -13,13 +14,14 @@ import (
 
 // Instance type
 type Instance struct {
-	bind string
-	port int
+	Checker *vatcheck.Checker
+	bind    string
+	port    int
 }
 
 // New creates a new server instance.
-func New(bind string, port int) *Instance {
-	return &Instance{bind, port}
+func New(checker *vatcheck.Checker, bind string, port int) *Instance {
+	return &Instance{checker, bind, port}
 }
 
 // ListenAndServe listens on the TCP network address and then

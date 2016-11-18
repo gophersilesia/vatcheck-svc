@@ -33,6 +33,6 @@ type cfg struct {
 func InitializeConfig() {
 	err := envconfig.Process("", &Config)
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Fatal(err)
 	}
 }

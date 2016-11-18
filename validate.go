@@ -45,6 +45,9 @@ func IsValidFormat(id string) bool {
 		return false
 	}
 
-	match, _ := regexp.MatchString(reg, id[2:])
+	match, err := regexp.MatchString(reg, id[2:])
+	if err != nil {
+		return false
+	}
 	return match
 }

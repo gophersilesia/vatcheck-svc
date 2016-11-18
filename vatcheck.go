@@ -22,6 +22,7 @@ var (
 	ErrCircuitTripped = errors.New("The circuit is tripped")
 )
 
+// Checker wraps all the dependencies for the VAT validation logic.
 type Checker struct {
 	method  func(id string) (*vat.VATresponse, error)
 	cache   *ttlcache.Cache
