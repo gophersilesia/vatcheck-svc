@@ -1,9 +1,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 )
 
 // Do not set these manually! these variables
@@ -14,13 +15,13 @@ var buildTag, buildDate string
 func VersionCommand() cli.Command {
 	return cli.Command{
 		Name:  "version",
-		Usage: "Print the version number of nx-vatcheck service",
-		Action: func(ctx *cli.Context) {
+		Usage: "Print the version number of the service",
+		Action: func(ctx *cli.Context) error {
 			if buildTag != "" && buildDate != "" {
 				fmt.Printf("%s built on %s\n", buildTag, buildDate)
-				return
+				return nil
 			}
-			fmt.Print("undefined")
+			return errors.New("No version")
 		},
 	}
 }

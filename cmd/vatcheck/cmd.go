@@ -4,8 +4,8 @@ import (
 	"os"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/codegangsta/cli"
 	. "github.com/gopherskatowice/vatcheck-svc/config"
+	"github.com/urfave/cli"
 )
 
 var (
@@ -15,13 +15,11 @@ var (
 
 // Initialize commandline app.
 func init() {
-	// Init app (app is the main structure of our cli application)
 	App = cli.NewApp()
 
-	// For fancy output on console
-	App.Name = "nx-vatcheck"
+	App.Name = "vatcheck-svc"
 	App.Usage = `Check if the given VAT number is valid against the EU VIES service`
-	App.Author = "Nexway"
+	App.Author = "Gophers Katowice"
 
 	// Version is injected at build-time
 	App.Version = ""
