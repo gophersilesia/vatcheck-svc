@@ -1,31 +1,27 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	log "github.com/Sirupsen/logrus"
-	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/urfave/cli"
 )
 
 var (
-	// App codegangsta/cli root cmd
 	App *cli.App
+
+	// Do not set these manually! these variables
+	// are meant to be set through ldflags.
+	buildTag, buildDate string
 )
 
-// Initialize commandline app.
 func init() {
 	App = cli.NewApp()
-
 	App.Name = "vatcheck-svc"
-	App.Usage = `Check if the given VAT number is valid against the EU VIES service`
+	App.Usage = "Check if the given VAT number is valid against the EU VIES service"
 	App.Author = "Gophers Katowice"
-
-	// Version is injected at build-time
-	App.Version = ""
-
-	InitializeConfig()
-	InitializeLogging(Config.LogLevel)
+	App.Version = fmt.Sprintf("%s built %s", buildTag, buildDate)
 }
 
 func main() {
@@ -37,7 +33,6 @@ func main() {
 
 // AddCommands adds child commands to the root command Cmd.
 func AddCommands() {
-	AddCommand(VersionCommand())
 	AddCommand(ServerCommand())
 }
 

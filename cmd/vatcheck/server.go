@@ -1,8 +1,10 @@
 package main
 
 import (
+	vatcheck "github.com/gopherskatowice/vatcheck-svc"
 	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/gopherskatowice/vatcheck-svc/server"
+	"github.com/mattes/vat"
 	"github.com/urfave/cli"
 )
 
@@ -12,11 +14,14 @@ func ServerCommand() cli.Command {
 		Name:  "server",
 		Usage: "Start the HTTP server",
 		Action: func(c *cli.Context) error {
-			srv := server.New(
+			InitializeConfig()
+			InitializeLogging(Config.LogLevel)
+
+			return server.New(
+				vatcheck.New(vat.CheckVAT),
 				Config.HTTPBind,
 				Config.HTTPPort,
-			)
-			return srv.ListenAndServe()
+			).ListenAndServe()
 		},
 	}
 }
