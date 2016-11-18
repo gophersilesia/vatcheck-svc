@@ -14,15 +14,6 @@ Past and current works:
 
 .image http://golang.org/doc/gopher/gopherbw.png 200 _
 
-* Chapters
-
-1. VAT # validation logic
-2. Circuit breaker
-3. Caching layer (+ config)
-4. Tests + bench
-5. HTTP server
-6. `cmd` package
-
 * Best Practices in Go
 
 1. *Executable*commands*must*always*use* `package`main`
@@ -60,26 +51,46 @@ Use the best tool for the job.
 
 * For the sake of this exercise
 
-We transgressed a few microservices concept for the sake of simplicity.
+We transgressed a few microservice principles for the sake of simplicity.
 
 - Cache should be distributed
-- Configuration should be distributed as well, based on Consul and updatable on-the-fly
+- Configuration should be distributed as well
 
-* We will implement
+.image distributed.png _ 150
 
-- Environment-based configuration
-- Local cache
-- Circuit breaker
-- Health monitoring
-- HTTP server with middleware
+* Chapters
+
+1. Validation logic
+2. Circuit breaker
+3. Caching layer (+ config)
+4. Tests + bench
+5. HTTP server
+6. `cmd` package
 
 * A few extras
 
 If we have time, we'll take a look at:
 
-- Makefile
-- Docker
-- Vendoring
+7. Makefile
+8. Vendoring
+9. Docker
+
+* You will need
+
+*Environment*
+
+1. A working Go environment (preferably `1.7.3`)
+2. A code editor properly configured to run automatically `goimports`
+
+*Dependencies*
+
+`go`get`github.com/Sirupsen/logrus`
+`go`get`github.com/hotolab/envconfig`
+`go`get`github.com/labstack/echo/...`
+`go`get`github.com/mattes/vat`
+`go`get`github.com/sony/gobreaker`
+`go`get`github.com/urfave/cli`
+`go`get`github.com/wunderlist/ttlcache`
 
 * Time to code!
 
