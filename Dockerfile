@@ -3,7 +3,7 @@ FROM alpine:3.4
 RUN apk add --no-cache ca-certificates curl
 
 # Copy binary into image
-COPY ./cmd/vatcheck/vatcheck /
+COPY ./cmd/vatcheck/vatcheck-svc /
 
 # Default values
 ENV HTTP_BIND 0.0.0.0
@@ -19,4 +19,4 @@ HEALTHCHECK --interval=1m --timeout=2s \
 
 
 CMD ["--help"]
-ENTRYPOINT ["/vatcheck"]
+ENTRYPOINT ["/vatcheck-svc"]

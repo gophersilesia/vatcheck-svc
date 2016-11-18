@@ -21,20 +21,12 @@ type cfg struct {
 	LogLevel string `envconfig:"LOG_LEVEL" default:"debug"`
 
 	// Cors
-	DisableCors bool     `envconfig:"DISABLE_CORS"`
 	CorsOrigins []string `envconfig:"CORS_ORIGINS" default:"*"`
 	CorsHeaders []string `envconfig:"CORS_HEADERS" default:"Origin,X-Requested-With,Content-Type,Accept,Accept-Language,Authorization"`
 	CorsMethods []string `envconfig:"CORS_METHODS" default:"GET,OPTIONS"`
 
 	// Cache
 	CacheDuration time.Duration `envconfig:"CACHE_DURATION" default:"2m"`
-
-	// Healthcare
-	DisableHealth   bool          `envconfig:"DISABLE_HEALTH"`
-	HealthBind      string        `envconfig:"HEALTH_BIND" default:"127.0.0.1"`
-	HealthPort      int           `envconfig:"HEALTH_PORT" default:"8090"`
-	HealthRetention time.Duration `envconfig:"HEALTH_RETENTION" default:"2h"`
-	HealthInterval  time.Duration `envconfig:"HEALTH_INTERVAL" default:"1m"`
 }
 
 // InitializeConfig loads the configuration from the environment.

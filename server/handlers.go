@@ -9,25 +9,34 @@ import (
 	"github.com/mattes/vat"
 )
 
-// getVatID checks in the VIES database if the given number is valid.
-func (srv *Instance) getVatID(c echo.Context) error {
+// vatHandler checks in the VIES database if the given number is valid.
+func (srv *Instance) vatHandler(c echo.Context) (err error) {
 	vatid := c.Param("vatid")
 	w := c.Response()
 
-	valid, err := vatcheck.IsValid(vatid)
+	checker := vatcheck.New(vat.CheckVAT)
+	valid, err := checker.IsValid(vatid)
 	if err != nil {
-		jsend.Wrap(w).
+		_, err := jsend.Wrap(w).
 			Status(getCodeForError(err)).
 			Message(err.Error()).
 			Send()
 		return err
 	}
 
-	jsend.Wrap(w).
+	_, err = jsend.Wrap(w).
 		Status(http.StatusOK).
 		Data(valid).
 		Send()
-	return nil
+	return err
+}
+
+// healthHandler checks in the VIES database if the given number is valid.
+func (srv *Instance) healthHandler(c echo.Context) (err error) {
+	w := c.Response()
+	w.WriteHeader(http.StatusOK)
+	_, err = w.Write([]byte(`{"alive": true}`))
+	return err
 }
 
 // getCodeForError returns the matching HTTP code for a given error.
