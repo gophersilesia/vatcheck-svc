@@ -5,8 +5,8 @@ package config
 import (
 	"time"
 
-	"github.com/NexwayGroup/envconfig"
 	log "github.com/Sirupsen/logrus"
+	"github.com/hotolab/envconfig"
 )
 
 // Config is initialized at runtime and contains the whole application configuration.

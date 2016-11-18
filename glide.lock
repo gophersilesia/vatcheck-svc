@@ -1,40 +1,67 @@
-hash: 542041dd852b441035336cbcdc3ca49edd66d1d86309820943c64a488619371f
-updated: 2016-04-19T11:55:18.793634939+02:00
+hash: e716c10e034199afc4baa16bb7a958f9d19b6cfaf2ca3378a32a9b74ada0f541
+updated: 2016-11-19T00:15:49.157212229+01:00
 imports:
-- name: github.com/codegangsta/cli
-  version: 71f57d300dd6a780ac1856c005c4b518cfd498ec
-- name: github.com/gamegos/jsend
-  version: f47e169f3d768aeab828e47649413b719372981f
-- name: github.com/gocraft/health
-  version: 4497d93bda869d8c90236bab73a65f00c1650a7b
+- name: github.com/dgrijalva/jwt-go
+  version: 9ed569b5d1ac936e6494082958d63a6aa4fff99a
+- name: github.com/hotolab/envconfig
+  version: 52f095323172d544fb3b6c2144478d1bfb1b97e9
+- name: github.com/labstack/echo
+  version: 069cddf05ab9a854fe601966de46762ff5efd569
   subpackages:
-  - stack
-- name: github.com/julienschmidt/httprouter
-  version: 77366a47451a56bb3ba682481eed85b64fea14e8
+  - middleware
+- name: github.com/labstack/gommon
+  version: 9a43ff0d261e0e65594422e9eee08cf301aabbe7
+  subpackages:
+  - color
+  - log
+  - bytes
+  - random
 - name: github.com/mattes/vat
-  version: 93e8c05572f45e3488bc12ffec73348956d51c68
-- name: github.com/nbio/hitch
-  version: 8fcbaa615cc71ee9bf9b4049f323d6939bf16e7b
-- name: github.com/nbio/httpcontext
-  version: d2f7bb023e6ebb562d7d5e07a5f3a6ce935f4666
-- name: github.com/NexwayGroup/envconfig
-  version: adea6faa932c0ec5356ccc186169d0825c611565
-- name: github.com/rs/cors
-  version: 3ca2b550f6a4333b63c845850f760a7d00412cd6
-- name: github.com/rs/xhandler
-  version: d9d9599b6aaf6a058cb7b1f48291ded2cbd13390
+  version: 805d21ad07390288471b830934b4c08304774dc6
+- name: github.com/mattn/go-colorable
+  version: d228849504861217f796da67fae4f6e347643f15
+- name: github.com/mattn/go-isatty
+  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
+- name: github.com/miekg/dns
+  version: 58f52c57ce9df13460ac68200cef30a008b9c468
+- name: github.com/rsc/letsencrypt
+  version: 76104d26167d38b6a0010f42bfc8ec5487742e8b
 - name: github.com/Sirupsen/logrus
-  version: 081307d9bc1364753142d5962fc1d795c742baaf
+  version: a437dfd2463eaedbec3dfe443e477d3b0a810b3f
 - name: github.com/sony/gobreaker
-  version: 7b3b6140aefe29b32f779da1ea73510d3d315609
+  version: 809bcd5a528f344e95c2368796c9225d128f9b3e
+- name: github.com/tylerb/graceful
+  version: 4df1190835320af7076dfcf27b3d071fd3612caf
+- name: github.com/urfave/cli
+  version: b4f4786f378c0c1d3336b5bb798094b166edf5a9
+- name: github.com/valyala/fasttemplate
+  version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: github.com/wunderlist/ttlcache
   version: fa8f18d5e019f6bdf076153e60dccf2c6fc7ccf5
+- name: github.com/xenolf/lego
+  version: 0792ce9a9f543f72aa1ba4d67a693d5288ab7395
+  subpackages:
+  - acme
+- name: golang.org/x/crypto
+  version: 9477e0b78b9ac3d0b03822fd95422e2fe07627cd
+  subpackages:
+  - ocsp
 - name: golang.org/x/net
-  version: fb93926129b8ec0056f2f458b1f519654814edf0
+  version: 4971afdc2f162e82d185353533d3cf16188a9f4e
   subpackages:
   - context
+  - publicsuffix
 - name: golang.org/x/sys
-  version: f64b50fbea64174967a8882830d621a18ee1548e
+  version: b699b7032584f0953262cb2788a0ca19bb494703
   subpackages:
   - unix
-devImports: []
+- name: golang.org/x/time
+  version: f51c12702a4d776e4c1fa9b0fabab841babae631
+  subpackages:
+  - rate
+- name: gopkg.in/square/go-jose.v1
+  version: aa2e30fdd1fe9dd3394119af66451ae790d50e0d
+  subpackages:
+  - cipher
+  - json
+testImports: []

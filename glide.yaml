@@ -1,11 +1,11 @@
-package: github.com/gopherskatowice/vatcheck-vat
+package: github.com/gopherskatowice/vatcheck-svc
 import:
-- package: github.com/NexwayGroup/envconfig
 - package: github.com/Sirupsen/logrus
-- package: github.com/codegangsta/cli
-- package: github.com/gamegos/jsend
+- package: github.com/hotolab/envconfig
+- package: github.com/labstack/echo
+  subpackages:
+  - middleware
 - package: github.com/mattes/vat
-- package: github.com/nbio/hitch
-- package: github.com/rs/cors
 - package: github.com/sony/gobreaker
+- package: github.com/urfave/cli
 - package: github.com/wunderlist/ttlcache
