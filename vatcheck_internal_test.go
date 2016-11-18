@@ -7,13 +7,14 @@ import (
 	"time"
 
 	log "github.com/Sirupsen/logrus"
-	. "github.com/jgautheron/workshop/vat/config"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/mattes/vat"
 )
 
 var (
-	errMock     = errors.New("mock error to trip the circuit breaker")
-	validNumber = "PL6492291353"
+	errMock       = errors.New("mock error to trip the circuit breaker")
+	validNumber   = "PL6492291353"
+	invalidNumber = "XX1234567890"
 )
 
 func init() {
@@ -41,7 +42,7 @@ func TestIsValid(t *testing.T) {
 	}
 
 	if isValid, _ := IsValid(validNumber); !isValid {
-		t.Error("The number %s should be valid", validNumber)
+		t.Errorf("The number %s should be valid", validNumber)
 	}
 }
 
@@ -52,7 +53,7 @@ func TestInvalid(t *testing.T) {
 		return nil, errMock
 	}
 
-	if _, err := IsValid(validNumber); err == nil {
+	if _, err := IsValid(invalidNumber); err == nil {
 		t.Error("An error should be returned")
 	}
 }
@@ -92,7 +93,7 @@ func TestIsCached(t *testing.T) {
 	validNumber := "FR33440953859"
 
 	if _, exists := cache().Get(validNumber); exists {
-		t.Error("The number %s shouldn't be in cache", validNumber)
+		t.Errorf("The number %s shouldn't be in cache", validNumber)
 	}
 
 	c.checkMethod = func(id string) (*vat.VATresponse, error) {
@@ -100,10 +101,10 @@ func TestIsCached(t *testing.T) {
 	}
 
 	if isValid, _ := IsValid(validNumber); !isValid {
-		t.Error("The number %s should be valid", validNumber)
+		t.Errorf("The number %s should be valid", validNumber)
 	}
 	if _, exists := cache().Get(validNumber); !exists {
-		t.Error("The number %s should be in cache", validNumber)
+		t.Errorf("The number %s should be in cache", validNumber)
 	}
 }
 

@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
-	. "github.com/jgautheron/workshop/vat/config"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gocraft/health"
-	"github.com/nbio/hitch"
-	"github.com/rs/cors"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 // Instance type
@@ -48,34 +49,20 @@ func (srv *Instance) ListenAndServe() {
 
 // handlers returns httprouter handlers.
 func (srv *Instance) handlers() http.Handler {
-	h := hitch.New()
+	e := echo.New()
 
-	if !srv.disableCors {
-		// The below is necessary when interacting with the API using a regular
-		// browser and not in s2s scenarios.
-		h.Use(cors.New(cors.Options{
-			AllowedOrigins: Config.CorsOrigins,
-			AllowedHeaders: Config.CorsHeaders,
-			AllowedMethods: Config.CorsMethods,
-			Debug:          log.GetLevel() == log.DebugLevel,
-		}).Handler)
-	}
+	// Add middleware
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: Config.CorsOrigins,
+		AllowHeaders: Config.CorsHeaders,
+		AllowMethods: Config.CorsMethods,
+	}))
 
-	// Middlewares
-	h.Use(srv.initContentType)
-	h.Use(srv.initHealthJob)
+	// Enable debug mode
+	e.Debug = log.GetLevel() == log.DebugLevel
 
 	// Declare routes
-	h.Get("/:vatid", http.HandlerFunc(srv.getVatID))
+	e.GET("/:vatid", srv.getVatID)
 
-	return h.Handler()
-}
-
-// initContentType middleware sets the HTTP content-type.
-// We consider that the output will always be JSON.
-func (srv *Instance) initContentType(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		next.ServeHTTP(w, req)
-	})
+	return e
 }

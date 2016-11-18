@@ -1,7 +1,7 @@
 package vatcheck
 
 import (
-	. "github.com/jgautheron/workshop/vat/config"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/wunderlist/ttlcache"
 )
 

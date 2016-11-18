@@ -1,9 +1,9 @@
 package main
 
 import (
-	. "github.com/jgautheron/workshop/vat/config"
-	"github.com/jgautheron/workshop/vat/server"
 	"github.com/codegangsta/cli"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
+	"github.com/gopherskatowice/vatcheck-svc/server"
 )
 
 // ServerCommand starts the HTTP server.

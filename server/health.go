@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	. "github.com/jgautheron/workshop/vat/config"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gocraft/health"
+	. "github.com/gopherskatowice/vatcheck-svc/config"
 	"github.com/nbio/httpcontext"
 )
 

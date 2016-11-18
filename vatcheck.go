@@ -13,7 +13,9 @@ import (
 var (
 	c *check
 
-	ErrInvalidFormat  = errors.New("Invalid format")
+	// ErrInvalidFormat holds error for invalid VAT number
+	ErrInvalidFormat = errors.New("Invalid format")
+	// ErrCircuitTripped holds error for circuit
 	ErrCircuitTripped = errors.New("The circuit is tripped")
 )
 

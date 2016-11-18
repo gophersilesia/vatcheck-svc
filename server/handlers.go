@@ -3,22 +3,31 @@ package server
 import (
 	"net/http"
 
-	"github.com/jgautheron/workshop/vat"
+	"github.com/gamegos/jsend"
+	"github.com/gopherskatowice/vatcheck-svc"
+	"github.com/labstack/echo"
 	"github.com/mattes/vat"
-	"github.com/nbio/hitch"
 )
 
 // getVatID checks in the VIES database if the given number is valid.
-func (srv *Instance) getVatID(w http.ResponseWriter, r *http.Request) {
-	p := hitch.Params(r)
+func (srv *Instance) getVatID(c echo.Context) error {
+	vatid := c.Param("vatid")
+	w := c.Response()
 
-	valid, err := vatcheck.IsValid(p.ByName("vatid"))
+	valid, err := vatcheck.IsValid(vatid)
 	if err != nil {
-		srv.writeError(w, r, err, getCodeForError(err))
-		return
+		jsend.Wrap(w).
+			Status(getCodeForError(err)).
+			Message(err.Error()).
+			Send()
+		return err
 	}
 
-	srv.writeSuccess(w, r, valid, http.StatusOK)
+	jsend.Wrap(w).
+		Status(http.StatusOK).
+		Data(valid).
+		Send()
+	return nil
 }
 
 // getCodeForError returns the matching HTTP code for a given error.
