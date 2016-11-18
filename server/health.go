@@ -47,8 +47,3 @@ func (srv *Instance) initHealthJob(next http.Handler) http.Handler {
 		next.ServeHTTP(w, req)
 	})
 }
-
-// healthJob extracts the job from the request.
-func healthJob(req *http.Request) *health.Job {
-	return httpcontext.Get(req, healthJobKey).(*health.Job)
-}
